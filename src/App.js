@@ -157,7 +157,7 @@ class App extends Component {
       for (let i = 0; i < posts.length; i++) {
         setTimeout(() => {
           posts[i].scrollIntoView({behavior: 'smooth', block: 'center'})
-        }, 15000 + (i * 15))
+        }, 15000 + (i * 15000))
       }
 
       setTimeout(() => {
@@ -165,7 +165,7 @@ class App extends Component {
         images.shuffle()
         this.setState({clicked: false})
         this.onClick() 
-      }, 20000 + (posts.length * 15))      
+      }, 20000 + (posts.length * 15000))      
     }
   }
 
