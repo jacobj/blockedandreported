@@ -153,19 +153,19 @@ class App extends Component {
   onClick = () => {
     if (!this.state.clicked) {
       this.setState({clicked: true})
-      const images = document.getElementsByClassName('post')
-      for (let i = 0; i < images.length; i++) {
+      const posts = document.getElementsByClassName('post')
+      for (let i = 0; i < posts.length; i++) {
         setTimeout(() => {
-          images[i].scrollIntoView({behavior: 'smooth', block: 'center'})
-        }, 15000 + (i * 15000))
+          posts[i].scrollIntoView({behavior: 'smooth', block: 'center'})
+        }, 15000 + (i * 15))
       }
 
       setTimeout(() => {
         document.documentElement.scrollTop = 0
         images.shuffle()
-        this.setState({clicked: true})
+        this.setState({clicked: false})
         this.onClick() 
-      }, 15000 + (images.length * 15000))      
+      }, 20000 + (posts.length * 15))      
     }
   }
 
