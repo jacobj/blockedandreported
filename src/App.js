@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled, { keyframes } from 'styled-components'
-const BlockedAndReported = require('./blocked\ and\ reported.png')
+import scrollIntoView from 'scroll-into-view'
 
 const importAll = (r) => {
   return r.keys().map(r);
@@ -77,7 +77,7 @@ const HeadingSpan = styled.span`
   display: inline-block;
   animation-name: ${wave};
   animation-duration: 0.5s;
-  animation-delay: ${props => props.index / 50}s;
+  animation-delay: -${props => props.index / 50}s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   text-shadow:
@@ -139,6 +139,7 @@ Array.prototype.shuffle = function() {
 
 const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg|mp4)$/))
 
+// Initial shuffle
 images.shuffle()
 
 const text1 = "Blocked &"
@@ -156,7 +157,7 @@ class App extends Component {
       const posts = document.getElementsByClassName('post')
       for (let i = 0; i < posts.length; i++) {
         setTimeout(() => {
-          posts[i].scrollIntoView({behavior: 'smooth', block: 'center'})
+          scrollIntoView(posts[i])
         }, 15000 + (i * 15000))
       }
 
