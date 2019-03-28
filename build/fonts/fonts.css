@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "input-sans";
+  font-weight: 700;
+  src: url("/fonts/InputSans-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "input-sans";
+  font-weight: 400;
+  src: url("/fonts/InputSans-Regular.woff") format("woff");
+}

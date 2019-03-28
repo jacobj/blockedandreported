@@ -30,7 +30,7 @@ const Post = styled.div`
 const Header = styled.div`
   font-family: input-sans, sans-serif;
   font-weight: 400;
-  line-height: 0.90;
+  line-height: 0.9;
   font-size: 16px;
   border-bottom: solid 1px #333333;
   padding: 15px;
@@ -148,6 +148,15 @@ class App extends Component {
     this.state = { clicked: false }
   }
 
+  componentDidMount = () => {
+    document.addEventListener("keydown", (e) => {
+      var keyCode = e.keyCode
+      if (keyCode == 13 && !this.state.clicked) {
+        this.onClick()
+      }
+    }, false)
+  }
+
   onClick = () => {
     if (!this.state.clicked) {
       this.setState({ clicked: true })
@@ -199,7 +208,12 @@ class App extends Component {
             ) : (
               <Image src={i} />
             )}
-            {<Footer><Button>Block</Button><Button>Report</Button></Footer>}
+            {
+              <Footer>
+                <Button>Block</Button>
+                <Button>Report</Button>
+              </Footer>
+            }
           </Post>
         ))}
       </Container>
