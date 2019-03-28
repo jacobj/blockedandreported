@@ -1,10 +1,16 @@
 import React, { Component } from "react"
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes, injectGlobal } from "styled-components"
 import scrollIntoView from "scroll-into-view"
 
 const importAll = r => {
   return r.keys().map(r)
 }
+
+injectGlobal`
+  body {
+    background: #DDDDDD
+  }
+`
 
 const Container = styled.div`
   display: flex;
@@ -14,11 +20,11 @@ const Container = styled.div`
 `
 
 const Post = styled.div`
+  background: white;
   max-width: 500px;
   width: 100%;
-  border: solid 1px #aaaaaa;
+  border: solid 1px #333333;
   margin-bottom: 20px;
-  border-radius: 3px;
 `
 
 const Header = styled.div`
@@ -26,9 +32,7 @@ const Header = styled.div`
   font-weight: 400;
   line-height: 0.90;
   font-size: 16px;
-  border-bottom: solid 1px #aaaaaa;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-bottom: solid 1px #333333;
   padding: 15px;
   background: white;
 `
@@ -95,13 +99,12 @@ const HeadingSpan = styled.span`
 `
 
 const Button = styled.button`
+  color: black;
   font-family: input-sans, sans-serif;
-
   font-weight: 400;
   font-size: 16px;
-  background-color: #dcdcdc;
-  border: solid 1px #dcdcdc;
-  border-radius: 3px;
+  background-color: #dddddd;
+  border: solid 1px black;
   margin-right: 8px;
   padding: 8px 16px;
   outline: none;
@@ -189,7 +192,7 @@ class App extends Component {
         {images.map(i => (
           <Post className="post">
             <Header>@{i.replace(/^.*[\\\/]/, "").split(" - ")[0]}</Header>
-            {i.split(".")[2] === "mp4" ? (
+            {i.substring(i.lastIndexOf(".") + 1) === "mp4" ? (
               <Video autoPlay loop muted>
                 <source src={i} type="video/mp4" />
               </Video>
